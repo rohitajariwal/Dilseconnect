@@ -5,16 +5,20 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
 import android.widget.EditText
+import com.google.firebase.auth.FirebaseAuth
 
 class Login : AppCompatActivity() {
     private  lateinit var kedt_email: EditText
     private  lateinit var kedt_pass: EditText
     private  lateinit var kbtn_login: Button
     private  lateinit var kbtn_signup: Button
+    private lateinit var mAuth:FirebaseAuth
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
+
+        mAuth= FirebaseAuth.getInstance()
 
         kedt_email = findViewById(R.id.edt_email)
         kedt_pass = findViewById(R.id.edt_pass)
@@ -24,8 +28,17 @@ class Login : AppCompatActivity() {
         kbtn_signup.setOnClickListener {
             val intent = Intent(this, SignUp::class.java)
             startActivity(intent)
-
-
         }
+
+        kbtn_login.setOnClickListener {
+            val email = kedt_email.text.toString()
+            val password = kedt_pass.text.toString()
+
+            login(email,password)
+        }
+    }
+
+    private fun login(email: String,password: String){
+
     }
 }
