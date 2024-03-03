@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
 import android.widget.EditText
+import android.widget.Toast
 import com.google.firebase.auth.FirebaseAuth
 
 class SignUp : AppCompatActivity() {
@@ -19,6 +20,8 @@ class SignUp : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_sign_up)
 
+        supportActionBar?.hide()
+
         mAuth = FirebaseAuth.getInstance()
 
         kedt_name = findViewById(R.id.edt_name)
@@ -28,7 +31,7 @@ class SignUp : AppCompatActivity() {
         kbtn_signup = findViewById(R.id.btn_signup)
 
         kbtn_login.setOnClickListener {
-            val intent = Intent(this, SignUp::class.java)
+            val intent = Intent(this, Login::class.java)
             startActivity(intent)
         }
 
@@ -41,6 +44,18 @@ class SignUp : AppCompatActivity() {
     }
 
     private fun signUp(email:String,password:String){
+
+        mAuth.createUserWithEmailAndPassword(email, password)
+            .addOnCompleteListener(this) { task ->
+                if (task.isSuccessful) {
+                    val intent = Intent(this@SignUp, MainActivity::class.java)
+                    startActivity(intent)
+                } else {
+                    Toast.makeText(this@SignUp, "Some error occurred", Toast.LENGTH_SHORT).show()
+
+
+                }
+            }
 
     }
 }
