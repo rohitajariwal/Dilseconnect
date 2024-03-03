@@ -12,6 +12,7 @@
         android:layout_height="match_parent"
         tools:layout_editor_absoluteX="parent"
         tools:layout_editor_absoluteY="parent"
+        tools:listitem="@layout/user_layout"
 
         />
 </androidx.constraintlayout.widget.ConstraintLayout>
