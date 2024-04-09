@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/mainbg"
     tools:context=".ChatActivity">
 
     <androidx.recyclerview.widget.RecyclerView
@@ -12,7 +13,7 @@
         android:layout_above="@id/ll"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
-    
+
     <LinearLayout
         android:id="@+id/ll"
         android:layout_alignParentBottom="true"
